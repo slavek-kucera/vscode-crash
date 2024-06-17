@@ -9,6 +9,8 @@ async function main() {
             path.join(__dirname, '.'),
             '--disable-extensions',
             '--disable-workspace-trust',
+            '--crash-reporter-directory',
+            __dirname,
         ];
         const vscodeExecutablePath = await downloadAndUnzipVSCode('insiders');
 
