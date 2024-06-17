@@ -5,6 +5,11 @@ on:
     branches:
       - main
   workflow_dispatch:
+    inputs:
+      commit:
+        description: 'VSCode commit to test'
+        required: true
+        type: string
 
 jobs:
   formal-checks:
@@ -15,7 +20,7 @@ jobs:
       - name: npm ci
         run: npm ci
       - name: run
-        run: node run.js
+        run: COMMIT=${{ inputs.commit }} node run.js
       - name: list
         if: always()
         run: pwd && find . -name '*.dmp'

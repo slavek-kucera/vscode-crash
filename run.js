@@ -12,7 +12,7 @@ async function main() {
             '--crash-reporter-directory',
             __dirname,
         ];
-        const vscodeExecutablePath = await downloadAndUnzipVSCode('insiders');
+        const vscodeExecutablePath = await downloadAndUnzipVSCode(process.env.COMMIT ? { version: process.env.COMMIT } : 'insiders');
 
         await runTests({
             vscodeExecutablePath,
